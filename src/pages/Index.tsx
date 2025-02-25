@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation"; // ✅ Use default import
 import { ChefsSection } from "@/components/ChefsSection";
-import { FAQSection } from "@/components/FAQSection";
+import FAQSection from "@/components/FAQSection";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -47,7 +47,7 @@ const Index = () => {
     });
     const autoPlayInterval = setInterval(() => {
       api.scrollNext();
-    }, 2000);
+    }, 2500);
     return () => {
       clearInterval(autoPlayInterval);
     };
@@ -91,8 +91,9 @@ const Index = () => {
               size="lg"
               className="animate-fade-up bg-black text-white hover:bg-white hover:text-black border border-black transition-colors"
               style={{ animationDelay: "400ms" }}
+              onClick={() => window.open("https://form.typeform.com/to/QSuwJRfE", "_blank")}
             >
-              Plan Your Event <ArrowRight className="ml-2 h-4 w-4" />
+              Plan Your Event
             </Button>
           </div>
                    <div className="absolute bottom-12 left-0 right-0 flex justify-center gap-2">
@@ -113,44 +114,43 @@ const Index = () => {
       <section id="services" className="py-32">
         <div className="container px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-heading text-3xl md:text-5xl mb-6">Where Every Moment Becomes a Memory</h2>
+            <h2 className="font-heading text-3xl md:text-5xl mb-6">Tailored Experiences for Every Occasion</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-              Venue Vista offers distinctive locations designed to provide the perfect backdrop for your special events.
-              From intimate gatherings to grand celebrations, our spaces are crafted to inspire and delight.
+              From hands-on workshops to immersive team-building retreats, our spaces are designed to bring people together in inspiring ways.
             </p>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="space-y-4">
                 <div className="aspect-square rounded-lg overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
+                    src="images/cooking_class.jpg"
                     alt="Versatile Spaces"
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <h3 className="font-heading text-2xl">Versatile Spaces</h3>
-                <p className="text-muted-foreground">Adaptable venues for any occasion</p>
+                <h3 className="font-heading text-2xl">Hands-On Experiences for Every Passion</h3>
+                <p className="text-muted-foreground">Try cooking, crafting, and DIY workshops designed for fun and connection.</p>
               </div>
               <div className="space-y-4">
                 <div className="aspect-square rounded-lg overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
-                    alt="Premium Service"
+                    src="images/team_building.jpg"
+                    alt="Stronger Teams, One Experience at a Time"
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <h3 className="font-heading text-2xl">Premium Service</h3>
-                <p className="text-muted-foreground">Dedicated event coordination</p>
+                <h3 className="font-heading text-2xl">Stronger Teams, One Experience at a Time</h3>
+                <p className="text-muted-foreground">Step out of the office, collaborate, and share great food in a fresh setting.</p>
               </div>
               <div className="space-y-4">
                 <div className="aspect-square rounded-lg overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81"
-                    alt="Central Locations"
+                    src="images/video.jpg"
+                    alt="A Space to Tell Your Story"
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <h3 className="font-heading text-2xl">Central Locations</h3>
-                <p className="text-muted-foreground">Easy access from anywhere</p>
+                <h3 className="font-heading text-2xl">A Space for Video & Storytelling</h3>
+                <p className="text-muted-foreground">Create high-quality videos, styled content, and compelling brand narratives in a professional, well-lit space.</p>
               </div>
             </div>
           </div>
@@ -163,7 +163,7 @@ const Index = () => {
           <div className="max-w-2xl mx-auto text-center mb-20">
             <h2 className="font-heading text-3xl md:text-5xl mb-4">Our Locations</h2>
             <p className="text-muted-foreground text-lg">
-              Three unique destinations, endless possibilities
+              Three unique spaces, endless possibilities
             </p>
           </div>
 
@@ -171,43 +171,46 @@ const Index = () => {
             <div className="text-center space-y-6">
               <div className="aspect-[16/10] overflow-hidden rounded-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3"
-                  alt="Downtown location"
+                  src="images/flagship.jpg"
+                  alt="Cooks Connection Flagship"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              <h3 className="font-heading text-2xl">Downtown Elegance</h3>
+              <h3 className="font-heading text-2xl">Cooks Connection Flagship</h3>
               <p className="text-muted-foreground">
-                Our downtown location offers sophisticated urban charm with modern amenities and stunning city views.
+                A Premier Full-Kitchen Experience in the Heart of Charlottenburg
               </p>
+              <p>Sophie-Charlotten-Straße 50, <br /> 14059 Berlin</p>
             </div>
 
             <div className="text-center space-y-6">
               <div className="aspect-[16/10] overflow-hidden rounded-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3"
-                  alt="Garden location"
+                  src="images/bdh.jpg"
+                  alt="Berlin Dental Hub"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              <h3 className="font-heading text-2xl">Garden Estate</h3>
+              <h3 className="font-heading text-2xl">Berlin Dental Hub</h3>
               <p className="text-muted-foreground">
-                Set in lush surroundings, our garden estate provides a serene backdrop for weddings and outdoor events.
+                Sleek, Modern Venue in Schöneberg—Open Until 4 AM
               </p>
+              <p>Pfalzburger Str. 43-44, <br />10717 Berlin</p>
             </div>
 
             <div className="text-center space-y-6">
               <div className="aspect-[16/10] overflow-hidden rounded-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1439337153520-7082a56a81f4"
-                  alt="Waterfront location"
+                  src="images/coming_soon.jpg"
+                  alt="Studio 90"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              <h3 className="font-heading text-2xl">Waterfront View</h3>
+              <h3 className="font-heading text-2xl">Studio 90</h3>
               <p className="text-muted-foreground">
-                Our waterfront venue offers breathtaking views and a perfect setting for memorable celebrations.
+                Our new venue in Charlottenburg
               </p>
+              <p>Coming Soon</p>
             </div>
           </div>
         </div>
@@ -219,7 +222,7 @@ const Index = () => {
           <div className="max-w-2xl mx-auto text-center mb-20">
             <h2 className="font-heading text-3xl md:text-5xl mb-4">Captured Moments</h2>
             <p className="text-muted-foreground text-lg">
-              A glimpse into the extraordinary events at our venues
+              A glimpse into memorable events at our venues
             </p>
           </div>
 
@@ -238,18 +241,28 @@ const Index = () => {
                 <CarouselNext className="h-12 w-12 rounded-full bg-black/80 text-white hover:bg-white hover:text-black border-2 border-black transition-colors" />
               </div>
               <CarouselContent className="-ml-2 md:-ml-4">
-                {Array.from({ length: 8 }).map((_, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                    <div className="aspect-square overflow-hidden rounded-lg">
-                      <img
-                        src={`https://images.unsplash.com/photo-${index % 2 ? '1519167758481-83f550bb49b3' : '1464366400600-7168b8af9bc3'}?auto=format&fit=crop&q=80`}
-                        alt={`Event photo ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
+  {[
+    "/images/event1.jpg",
+    "/images/event2.jpg",
+    "/images/event3.jpg",
+    "/images/event4.jpg",
+    "/images/event5.jpg",
+    "/images/event6.jpg",
+    "/images/event7.jpg",
+    "/images/event8.jpg"
+  ].map((image, index) => (
+    <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+      <div className="aspect-square overflow-hidden rounded-lg">
+        <img
+          src={image}
+          alt={`Event photo ${index + 1}`}
+          className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+        />
+      </div>
+    </CarouselItem>
+  ))}
+</CarouselContent>
+
             </Carousel>
           </div>
         </div>
@@ -257,10 +270,9 @@ const Index = () => {
 
       {/* Company Hosted Section */}
       <section className="py-32 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FFFFFF] via-[#FFE3C4] via-[#FFB0B0] via-[#FFD4D4] to-[#FFFFFF] opacity-40" />
         <div className="container px-4 relative">
           <div className="max-w-2xl mx-auto text-center mb-20">
-            <h2 className="font-heading text-3xl md:text-5xl mb-4">Trusted By Industry Leaders</h2>
+            <h2 className="font-heading text-3xl md:text-5xl mb-4">Brands We Work With</h2>
             <p className="text-muted-foreground text-lg">
               We've had the privilege of hosting exceptional events for these organizations
             </p>
@@ -270,40 +282,40 @@ const Index = () => {
             <div className="text-center space-y-4">
               <div className="aspect-[3/2] relative">
                 <img
-                  src="https://images.unsplash.com/photo-1487958449943-2429e8be8625"
-                  alt="Tech Corp"
+                  src="images/amazon.jpg"
+                  alt="Amazon"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-heading text-2xl">Tech Corp</h3>
-              <p className="text-primary font-medium">Annual Innovation Summit</p>
-              <p className="text-muted-foreground">300+ attendees networking event</p>
+              <h3 className="font-heading text-2xl">Amazon</h3>
+             {/* <p className="text-primary font-medium">Annual Innovation Summit</p>
+              <p className="text-muted-foreground">300+ attendees networking event</p>*/}
             </div>
 
             <div className="text-center space-y-4">
               <div className="aspect-[3/2] relative">
                 <img
-                  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e"
-                  alt="Global Finance"
+                  src="images/netflix.png"
+                  alt="Netflix"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-heading text-2xl">Global Finance</h3>
-              <p className="text-primary font-medium">Executive Gala Dinner</p>
-              <p className="text-muted-foreground">200+ guest charity event</p>
+              <h3 className="font-heading text-2xl">Netflix</h3>
+              {/* <p className="text-primary font-medium">Executive Gala Dinner</p>
+              <p className="text-muted-foreground">200+ guest charity event</p>*/}
             </div>
 
             <div className="text-center space-y-4">
               <div className="aspect-[3/2] relative">
                 <img
-                  src="https://images.unsplash.com/photo-1496307653780-42ee777d4833"
-                  alt="Creative Studios"
+                  src="images/bayer.svg"
+                  alt="Bayer"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-heading text-2xl">Creative Studios</h3>
-              <p className="text-primary font-medium">Design Awards Ceremony</p>
-              <p className="text-muted-foreground">150+ industry professionals</p>
+              <h3 className="font-heading text-2xl">Bayer</h3>
+             {/* <p className="text-primary font-medium">Design Awards Ceremony</p>
+              <p className="text-muted-foreground">150+ industry professionals</p>*/}
             </div>
           </div>
         </div>
@@ -313,45 +325,8 @@ const Index = () => {
       <ChefsSection />
 
       {/* FAQ Section */}
-      <section className="py-32 bg-white">
-        <div className="container px-4">
-          <div className="max-w-2xl mx-auto text-center mb-20">
-            <h2 className="font-heading text-3xl md:text-5xl mb-4">Frequently Asked Questions</h2>
-            <p className="text-muted-foreground text-lg">
-              Find answers to common questions about our venues and services
-            </p>
-          </div>
+<FAQSection />
 
-          <div className="max-w-3xl mx-auto">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h3 className="font-heading text-2xl">What is Venue Vista?</h3>
-                <p className="text-muted-foreground">
-                  Venue Vista is a premier event venue provider that offers distinctive locations designed to provide the perfect backdrop for your special events.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <h3 className="font-heading text-2xl">What types of events do you offer?</h3>
-                <p className="text-muted-foreground">
-                  We offer a wide range of event types, including weddings, corporate events, and private parties.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <h3 className="font-heading text-2xl">How do I book an event?</h3>
-                <p className="text-muted-foreground">
-                  You can book an event by contacting our team directly or by filling out our online booking form.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <h3 className="font-heading text-2xl">What is your cancellation policy?</h3>
-                <p className="text-muted-foreground">
-                  Our cancellation policy is based on the terms of your booking agreement.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Footer with Policy */}
       <Footer />

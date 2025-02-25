@@ -7,15 +7,15 @@ export function Footer() {
       <div className="container px-4">
         <div className="grid md:grid-cols-4 gap-12">
           <div className="space-y-4">
-            <h3 className="font-heading text-2xl">Venue Vista</h3>
-            <p className="text-white/80">Creating unforgettable moments in extraordinary spaces.</p>
+            <h3 className="font-heading text-2xl">Cooks Connection</h3>
           </div>
-          
+
           <div className="space-y-4">
             <h4 className="font-medium text-lg">Quick Links</h4>
             <ul className="space-y-2">
+
               <li><a href="#venues" className="text-white/80 hover:text-white">Our Venues</a></li>
-              <li><a href="#services" className="text-white/80 hover:text-white">Services</a></li>
+
               <li><a href="#contact" className="text-white/80 hover:text-white">Contact</a></li>
             </ul>
           </div>
@@ -23,8 +23,8 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="font-medium text-lg">Contact</h4>
             <ul className="space-y-2">
-              <li className="text-white/80">contact@venuevista.com</li>
-              <li className="text-white/80">(555) 123-4567</li>
+              <li className="text-white/80">info@cooksconnection.de</li>
+         
             </ul>
           </div>
           
@@ -41,7 +41,7 @@ export function Footer() {
         </div>
         
         <div className="border-t border-white/20 mt-12 pt-8 text-center text-white/60">
-          <p>&copy; {new Date().getFullYear()} Venue Vista. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Cooks Connection. All rights reserved.</p>
         </div>
       </div>
     </footer>

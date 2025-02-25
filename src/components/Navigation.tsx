@@ -1,11 +1,11 @@
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import navigation hook
+import { useNavigate } from "react-router-dom"; // For form navigation
 
-const Navigation = () => { // ✅ Define the component before exporting
+const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate(); // Initialize router navigation
+  const navigate = useNavigate(); // Router navigation
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,14 +13,24 @@ const Navigation = () => { // ✅ Define the component before exporting
       setScrolled(window.scrollY > heroHeight - 80);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Function to handle smooth scrolling
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" }); // Smooth scrolling effect
+    }
+  };
+
   return (
-    <nav className={`fixed w-full backdrop-blur-xl z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/30' : 'bg-background/10'
-    }`}>
+    <nav
+      className={`fixed w-full backdrop-blur-xl z-50 transition-all duration-300 ${
+        scrolled ? "bg-white/30" : "bg-background/10"
+      }`}
+    >
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         <a href="/" className="font-heading">
           <img
@@ -30,23 +40,23 @@ const Navigation = () => { // ✅ Define the component before exporting
           />
         </a>
         <div className="hidden md:flex items-center gap-8">
-          <a
-            href="#locations"
+        <button
+            onClick={() => scrollToSection("services")}
             className={`text-sm font-medium transition-colors ${
-              scrolled ? 'text-black hover:text-black/80' : 'text-white hover:text-white/80'
-            }`}
-          >
-            Venues
-          </a>
-          <a
-            href="#services"
-            className={`text-sm font-medium transition-colors ${
-              scrolled ? 'text-black hover:text-black/80' : 'text-white hover:text-white/80'
+              scrolled ? "text-black hover:text-black/80" : "text-white hover:text-white/80"
             }`}
           >
             Services
-          </a>
-          {/* Updated Button to Navigate to the Form Page */}
+          </button>
+          <button
+            onClick={() => scrollToSection("locations")}
+            className={`text-sm font-medium transition-colors ${
+              scrolled ? "text-black hover:text-black/80" : "text-white hover:text-white/80"
+            }`}
+          >
+            Venues
+          </button>
+
           <Button
             size="sm"
             className="font-medium bg-black text-white hover:bg-white hover:text-black transition-colors"
@@ -63,4 +73,4 @@ const Navigation = () => { // ✅ Define the component before exporting
   );
 };
 
-export default Navigation; // ✅ Now it's a default export
+export default Navigation;
