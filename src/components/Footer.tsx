@@ -27,12 +27,15 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center space-y-2 text-white/80">
-            <div className="flex items-center gap-2">
-              <Mail size={24} />
-              <span>contact@venuevista.com</span>
-            </div>
-          </div>
+         <div className="flex flex-col items-center space-y-2 text-white/80">
+  <div className="flex items-center gap-2">
+    <Mail size={24} />
+    <a href="mailto:info@cooksconnection.de" className="hover:text-white transition-colors">
+      info@cooksconnection.de
+    </a>
+  </div>
+</div>
+
         </div>
 
         <div className="border-t border-white/20 mt-12 pt-8 text-center">
