@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import FormPage from "./pages/FormPage";
+import Impressum from "@/pages/Impressum";
 
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/form" element={<FormPage />} /> {/* Added FormPage route */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
+          <Route path="/impressum" element={<Impressum />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
