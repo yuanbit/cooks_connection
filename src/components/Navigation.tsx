@@ -57,13 +57,14 @@ const Navigation = () => {
             Venues
           </button>
 
-          <Button
-            size="sm"
-            className="font-medium bg-black text-white hover:bg-white hover:text-black transition-colors"
-            onClick={() => navigate("/form")} // Navigate to FormPage
-          >
-            Plan Your Event
-          </Button>
+<Button
+  size="sm"
+  className="font-medium bg-black text-white hover:bg-white hover:text-black transition-colors"
+  onClick={() => window.open("/form", "_blank")} // Open FormPage in a new tab
+>
+  Plan Your Event
+</Button>
+
         </div>
         <Button variant="ghost" size="icon" className="md:hidden text-white">
           <Menu className="h-5 w-5" />
