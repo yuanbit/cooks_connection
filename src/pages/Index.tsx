@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation"; // ✅ Use default import
+import Navigation from "@/components/Navigation";
 import { ChefsSection } from "@/components/ChefsSection";
 import FAQSection from "@/components/FAQSection";
 import { Footer } from "@/components/Footer";
@@ -15,29 +15,31 @@ import {
 } from "@/components/ui/carousel";
 
 import React, { useState, useEffect } from "react";
+import { fetchContent } from "@/contentful"; // ✅ Import Contentful helper
 
 const heroImages = [
   {
     url: "/images/webp/hero1.webp",
-    alt: "Flagship Venue"
+    alt: "Flagship Venue",
   },
   {
     url: "/images/webp/hero2.webp",
-    alt: "Your Custom Venue 2"
+    alt: "Your Custom Venue 2",
   },
   {
     url: "/images/webp/hero3.webp",
-    alt: "Your Custom Venue 3"
+    alt: "Your Custom Venue 3",
   },
   {
     url: "/images/webp/hero4.webp",
-    alt: "Your Custom Venue 4"
-  }
+    alt: "Your Custom Venue 4",
+  },
 ];
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [api, setApi] = useState<CarouselApi>();
+  const [brands, setBrands] = useState<{ name: string; logo?: string }[]>([]);
 
   useEffect(() => {
     if (!api) return;
@@ -52,6 +54,25 @@ const Index = () => {
 
     return () => clearInterval(autoPlayInterval);
   }, [api]);
+
+  // 🔹 Fetch brands from Contentful
+  useEffect(() => {
+    const fetchBrands = async () => {
+      try {
+        const data = await fetchContent("brands"); // ✅ Fetch brands from Contentful
+        const brandsData = data.map((item: any) => ({
+          name: item.companieName, // ✅ Ensure field name matches Contentful
+          logo: item.logo?.fields?.file?.url || "/images/webp/placeholder-logo.webp", // ✅ Handle missing logos with fallback
+        }));
+
+        setBrands(brandsData);
+      } catch (error) {
+        console.error("Error fetching brands:", error);
+      }
+    };
+
+    fetchBrands();
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -94,18 +115,6 @@ const Index = () => {
               Plan Your Event
             </Button>
           </div>
-
-          <div className="absolute bottom-12 left-0 right-0 flex justify-center gap-2">
-            {heroImages.map((_, index) => (
-              <button
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentSlide === index ? 'bg-white scale-125' : 'bg-white/50'
-                }`}
-                onClick={() => api?.scrollTo(index)}
-              />
-            ))}
-          </div>
         </div>
       </section>
 
@@ -142,7 +151,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Locations Section */}
+       {/* Locations Section */}
       <section id="locations" className="py-32 bg-white">
         <div className="container px-4">
           <div className="max-w-2xl mx-auto text-center mb-20">
@@ -175,6 +184,62 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Brands We Work With Section (DYNAMIC) */}
+<section className="py-32 relative">
+  <div className="container px-4 relative">
+    <div className="max-w-2xl mx-auto text-center mb-20">
+      <h2 className="font-heading text-3xl md:text-5xl mb-4">Brands We Work With</h2>
+      <p className="text-muted-foreground text-lg">
+        We've had the privilege of hosting exceptional events for these organizations.
+      </p>
+    </div>
+
+    <div className="relative px-16">
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        className="w-full"
+      >
+        {/* Previous Button */}
+        <div className="absolute -left-4 top-1/2 -translate-y-1/2 z-10">
+          <CarouselPrevious className="h-12 w-12 rounded-full bg-black/80 text-white hover:bg-white hover:text-black border-2 border-black transition-colors" />
+        </div>
+
+        {/* Next Button */}
+        <div className="absolute -right-4 top-1/2 -translate-y-1/2 z-10">
+          <CarouselNext className="h-12 w-12 rounded-full bg-black/80 text-white hover:bg-white hover:text-black border-2 border-black transition-colors" />
+        </div>
+
+        <CarouselContent className="-ml-2 md:-ml-4">
+          {brands.map((brand, index) => (
+            <CarouselItem
+              key={index}
+              className="pl-2 md:pl-4 basis-full md:basis-1/3 lg:basis-1/4 flex flex-col items-center justify-center text-center"
+            >
+              <div className="flex flex-col items-center space-y-6">
+                {/* Bigger Logo */}
+                <div className="w-[500px] h-[200px] flex items-center justify-center">
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="max-w-[300px] max-h-[150px] object-contain"
+                  />
+                </div>
+
+                {/* Brand Name */}
+                <h3 className="font-heading text-2xl text-center">{brand.name}</h3>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    </div>
+  </div>
+</section>
+
 
       {/* Additional Sections */}
       <ChefsSection />
