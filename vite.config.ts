@@ -5,6 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: "/cooks_connection/", // 👈 Add your GitHub repo name here
   server: {
     host: "::",
     port: 8080,
